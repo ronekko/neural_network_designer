@@ -1,0 +1,70 @@
+body {
+  min-width: 520px;
+  font-size: 14px;
+  padding: 0.5em
+}
+
+div#header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: .2em 0 0.2em 1em;
+  z-index: 100;
+  border-bottom: solid 1px;
+}
+.column {
+  float: left;
+  margin: 1em 1em 10em 0;
+  width: 300px;
+}
+#dummy{
+  width: 300px;
+}
+#catalog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 2.1em 1em 1.2em 1em;
+}
+.component {
+/*  margin: 0 1em 1em 0;
+  padding: 0.3em;
+  width: 250px;*/
+  min-width: 300px;
+}
+#catalog .component {
+  margin-bottom: 1em;
+}
+.component-header {
+  padding-left: 0.2em;
+  position: relative;
+  cursor: move;
+}
+.component-close {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -8px;
+  cursor: pointer;
+}
+.component-content {
+  padding-left: 0.2em;
+}
+.component-placeholder {
+  border: 1px dotted black;
+  margin: 0 1em 1em 0;
+  height: 50px;
+}
+
+.consistent {
+  background: #7E4;
+}
+.inconsistent {
+  background: #F42;
+}
+.no-parameter{
+  min-width: 280px;
+  max-width: 280px;
+  margin-left: 20px;
+}
