@@ -32,7 +32,7 @@ $(function() {
         }
         else if(type == "Linear"){
           var batch = shape[0];
-          var feature = shape.slice(1).reduce(function(x, y){return x * y;})
+          var feature = shape.slice(1).reduce(function(x, y){return x * y;});
           var dim_in = params[0], dim_out = params[1];
           var b = 1;  // bias
           if( feature != dim_in){
@@ -59,7 +59,7 @@ $(function() {
           gkx += gsx * (kx - 1);
           gky += gsy * (ky - 1);
           gsx *= sx;
-          gsy *= sy
+          gsy *= sy;
           global_shape = [gkx, gky, gsx, gsy];
           model_memory_footprint += (ch_in * kx * ky + b) * ch_out;
           variable_memory_footprint += batch * ch_out * h_new * w_new;
@@ -79,7 +79,7 @@ $(function() {
           gkx += gsx * (px - 1);
           gky += gsy * (py - 1);
           gsx *= sx;
-          gsy *= sy
+          gsy *= sy;
           global_shape = [gkx, gky, gsx, gsy];
           
           shape = [batch, ch, h_new, w_new];
@@ -155,7 +155,7 @@ $(function() {
   $( ".component" )
   .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
   .find( ".component-header" )
-  .addClass( "ui-widget-header ui-corner-all" )
+  .addClass( "ui-widget-header ui-corner-all" );
 
   $("#network input[type=number]").bind("keyup input", function(){
     refresh();
