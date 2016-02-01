@@ -111,6 +111,7 @@ $(function() {
     cancel: ".component-close",
     placeholder: "component-placeholder ui-corner-all",
     tolerance: "pointer",
+    items: "div.sortable",
     //cursor: "move",
     stop: function(event, ui){
       refresh();
@@ -138,7 +139,7 @@ $(function() {
 
       // set the input size by the output size of the upstream element
       if(ui.helper.hasClass("parametric")){
-        var upstream_shape = ui.helper[0].previousSibling.shape;
+        var upstream_shape = ui.helper[0].previousElementSibling.shape;
         var type = ui.helper.find(".component-header").text();
         if(type == "Linear"){
           var size = upstream_shape.slice(1).reduce(function(x, y){return x * y;});
