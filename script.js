@@ -158,6 +158,8 @@ $(function() {
     connectToSortable: "#network",
     helper: "clone",
     stop : function(event, ui) {
+      if(!$(ui.helper[0].parentElement).is("#network")){return;}
+
       // some preparation
       ui.helper.removeAttr("style")
       .removeClass("ui-draggable")
