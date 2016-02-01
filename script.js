@@ -75,7 +75,7 @@ $(function() {
             w_new = ((w - px) / sx) + 1;
             h_new = ((h - py) / sy) + 1;
           }
-          
+
           var gkx = global_shape[0], gky = global_shape[1];
           var gsx = global_shape[2], gsy = global_shape[3];
           gkx += gsx * (px - 1);
@@ -83,7 +83,7 @@ $(function() {
           gsx *= sx;
           gsy *= sy;
           global_shape = [gkx, gky, gsx, gsy];
-          
+
           shape = [batch, ch, h_new, w_new];
           variable_memory_footprint += batch * ch * h_new * w_new;
         }
