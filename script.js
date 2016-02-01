@@ -21,12 +21,14 @@ $(function() {
           return parseInt(number.value);
         });
         $(elem).find(".out").remove();
+        $(elem).find(".global-shape").remove();
         $(elem).removeClass("inconsistent");
 
         var valid = true;
 
         if(type == "Input"){
           var batch = params[0], ch = params[1], h = params[2], w = params[3];
+          input_shape = [batch, ch, h, w];
           shape = [batch, ch, h, w];
           variable_memory_footprint += batch * ch * h * w;
         }
@@ -92,8 +94,41 @@ $(function() {
 
         elem.shape = clone_array(shape);
         elem.global_shape = clone_array(global_shape);
-        $(elem).append("<div class=out><hr><p>global shape: " + global_shape +
-                       "</p><p>out: " + shape + "</p></div>");
+
+        // display global shape and output shape
+        var out = $("<div class=out><hr><p>global shape: " + global_shape +
+          "</p><p>out: " + shape + "</p></div>");
+        $(elem).find(".component-content").append(out);
+
+        // display graphical global shape
+        if(type != "Linear"){
+          var input_h = input_shape[2], input_w = input_shape[3];
+          var input_shape_image = $("<div></div>",
+            {class: "global-shape", height: input_h, width: input_w, css: {
+              "background-color":"gray", margin: "2px", border: "1px solid black",
+              float:"right", position: "relative"
+            }
+          });
+
+          var gkx = global_shape[0], gky = global_shape[1];
+          var gsx = global_shape[2], gsy = global_shape[3];
+          var h = shape[2], w = shape[3];
+          var tiles = h < w ? h : w;
+          tiles = tiles < 10 ? tiles : 10;
+          for(var i=0; i<tiles; ++i){
+            var color = i % 2 == 0 ? "black" : "white";
+            var top = i * gsy - 1 + "px", left = i * gsx - 1 + "px";
+            var global_shape_image = $("<div></div>",
+              {height: gky, width: gkx, css: {
+                border: "1px solid " + color,
+                position: "absolute", top: top, left: left
+              }
+            });
+            $(input_shape_image).append(global_shape_image);
+          }
+          $(elem).append(input_shape_image);
+        }
+
         if(!valid){
           $(elem).addClass("inconsistent");
           $("#header").addClass("inconsistent");
