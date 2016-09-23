@@ -46,12 +46,11 @@ $(function() {
         }
         else if(type == "Convolution2D"){
           var batch = shape[0], ch = shape[1], h = shape[2], w = shape[3];
-          var ch_in = params[0], ch_out = params[1], kx = params[2];
-          var ky = params[3], sx = params[4], sy = params[5];
+          var ch_in = params[0], ch_out = params[1], kx = params[2], ky = params[3]; var sx = params[4], sy = params[5], px = params[6], py = params[7];
           var b = 1;  // bias
-          if( (w - kx) % sx == 0 && (h - ky) % sy == 0){
-            w_new = ((w - kx) / sx) + 1;
-            h_new = ((h - ky) / sy) + 1;
+          if( (w - kx + 2 * px) % sx == 0 && (h - ky + 2 * py) % sy == 0){
+            w_new = ((w - kx + 2 * px) / sx) + 1;
+            h_new = ((h - ky + 2 * py) / sy) + 1;
           }else{
             valid = false;
           }

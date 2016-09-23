@@ -19,14 +19,14 @@ div#header{
   min-width: 300px;
 }
 #dummy{
-  width: 300px;
+  width: 400px;
 }
 #catalog {
   position: fixed;
   top: 0;
   left: 0;
   margin: 2.1em 1em 1.2em 1em;
-  width: 300px;
+  width: 400px;
 }
 .component {
 /*  margin: 0 1em 1em 0;
